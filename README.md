@@ -1,0 +1,2 @@
+# akkademy-db
+akka
