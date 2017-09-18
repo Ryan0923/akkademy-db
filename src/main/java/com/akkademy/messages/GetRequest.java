@@ -8,5 +8,4 @@ public class GetRequest implements Serializable {
     public GetRequest(String key) {
         this.key = key;
     }
-
 }
