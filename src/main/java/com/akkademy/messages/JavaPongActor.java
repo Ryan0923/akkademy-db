@@ -10,13 +10,13 @@ public class JavaPongActor extends AbstractActor {
 
     @Override
     public PartialFunction receive() {
-        return ReceiveBuilder.
-            matchEquals("Ping", s ->
-                sender().tell("Pong", ActorRef.noSender())).
-            matchAny(x ->
+        return ReceiveBuilder
+            .matchEquals("Ping", s ->
+                sender().tell("Pong", ActorRef.noSender()))
+            .matchAny(x ->
                 sender().tell(
                     new Status.Failure(new Exception("unknown message")), self()
-                )).
-            build();
+                ))
+            .build();
     }
 }

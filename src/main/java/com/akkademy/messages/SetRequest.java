@@ -1,9 +1,11 @@
 package com.akkademy.messages;
 
-public class SetRequest {
-    private final String key;
+import java.io.Serializable;
 
-    private final Object value;
+public class SetRequest implements Serializable {
+    public final String key;
+
+    public final Object value;
 
     public SetRequest(String key, Object value) {
         this.key = key;

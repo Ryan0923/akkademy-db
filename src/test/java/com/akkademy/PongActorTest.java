@@ -34,4 +34,17 @@ public class PongActorTest {
         CompletableFuture jFuture = (CompletableFuture)cs;
         assert (jFuture.get(1000, TimeUnit.MILLISECONDS).equals("pong"));
     }
+
+    public CompletionStage<String> askPong(String message) {
+        Future sFuture = ask(actorRef, message, 1000);
+        final CompletionStage<String> cs = toJava(sFuture);
+        return cs;
+    }
+
+    @Test
+    public void printToConsole() throws Exception {
+        askPong("Ping")
+            .thenAccept(x -> System.out.println("replied with: " + x));
+        Thread.sleep(100);
+    }
 }
